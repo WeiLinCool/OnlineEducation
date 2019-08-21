@@ -133,6 +133,7 @@ public class UserController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return new JsonView().toString();
 	}
 	
