@@ -91,6 +91,19 @@ public class AuthUserServiceImpl implements IAuthUserService{
 		return entityDao.getSchool();
 	}
 
+	@Override
+	public List<String> getProvince() {
+		// TODO Auto-generated method stub
+		return entityDao.getProvince();
+	}
+
+	@Override
+	public List<String> getCity(String pro) {
+		// TODO Auto-generated method stub
+		return entityDao.getCity(pro);
+	}
+
+
 
 
 }

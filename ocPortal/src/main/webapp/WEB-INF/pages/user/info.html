@@ -8,48 +8,7 @@
 		<meta name="description" content="">
 		<title>个人主页</title>
 		<#include "../common/res.html">
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-		<script type="text/javascript">
-			$(function() {
-
-				//定义一个数组来存放省份
-				var proArray = new Array("福建省", "台湾省", "日本省", "韩国省");
-
-				//本来 [] 中是数组下标,修改为数组元素的值
-				proArray["福建省"] = new Array("厦门", "福州", "漳州", "泉州");
-				proArray["台湾省"] = new Array("台北", "台中","台南");
-				proArray["日本省"] = new Array("东京", "大阪", "广岛", "横滨", "长崎");
-				proArray["韩国省"] = new Array("首尔", "济州岛");
-				
-			/* 	proArray["厦门"] = new Array("思明区", "湖里区", "集美区", "海沧区");
-				proArray["福州"] = new Array("鼓楼区", "台江区", "仓山区", "马尾区");
-				proArray["漳州"] = new Array("芗城区", "龙文区", "云霄", "漳浦");
-				proArray["泉州"] = new Array("惠安", "安溪", "永春", "永春");
-				
-				proArray["台北"] = new Array("新竹", "宜兰","苗栗");
-				proArray["台中"] = new Array("彰化", "南投");
-				proArray["台南"] = new Array("云林", "嘉义");
-				 */
-
-				$.each(proArray, function() {
-					$("#province").append("<Option value='" + this + "'>" + this + "</Option>");
-				})
-				//			$(function(){
-				//				$("select:first").append("<Option>"+proArray[1]+"<Option>");
-				//			})
-				$("#province").change(function() {
-				
-					$("#city").empty();
-					
-					$.each(proArray[this.value], function() {
-						$("#city").append("<option value='" + this + "' >" + this + "</option>");
-					});
-					
-				
-				});
-
-			});
-		</script> 
+	
 		
 		
 	</head>
@@ -114,12 +73,25 @@
 								<option value="浙江" <#if authUser.province?? && authUser.province == '浙江'> selected="selected"</#if>>浙江</option>
 								<option value="广东" <#if authUser.province?? && authUser.province == '广东'> selected="selected"</#if>>广东</option>
 							 -->
+							 <#if province??>
+									<#list province as pro>
+										<option value="${pro}" <#if authUser.province?? && authUser.province== '${pro}'> selected="selected"</#if>>${pro}</option>
+									</#list>
+							</#if>
 							 </select>
 						</li>
 						<li><label>城市</label> 
 							<!-- <input name="province"  value="${authUser.city!}" type="text"  class="input-text2"> -->
 							<select class="input-select" name="city" id="city"> 
-								</select>
+							<#if authUser.city??>
+										<option value="${authUser.city!}">${authUser.city!}</option>
+							</#if>
+							 <#if city??>
+									<#list city as c>
+										<option value="${c}" <#if authUser.city?? && authUser.city=='${c}'> selected="selected"</#if>>${c}</option>
+									</#list>
+							</#if>
+							</select>
 						</li>
 						<!-- 
 						<li><label>区县</label> 
@@ -159,6 +131,7 @@
 		</div>
 		
 		<#include "../common/footer.html">
+		
 		<script type="text/javascript">
 			
 			function doUpload(){
@@ -192,6 +165,31 @@
 					}
 				});
 			}
+			
+			function citiajax(){
+					$.ajax({
+           	type: "get",
+            url: "${s.base}/user/info.html?province2="+$("#province").val(),
+            dataType: "json",
+            success: function (data) {
+            		data = $.parseJSON(data);
+            		console.log("a");
+                },
+            error:function (xhr) {
+            }
+       	 });
+			
+			}
+			$("#province").change(function() {
+					//将options列表中的数据保留一个  -请选择-
+					//jquery
+					$("#city").empty();
+					citiajax();	
+			});
+			
+			
+			
+			
 		</script>		
 	</body>
 	
