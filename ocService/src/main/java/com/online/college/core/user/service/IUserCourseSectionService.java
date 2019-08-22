@@ -53,7 +53,10 @@ public interface IUserCourseSectionService {
 	**/
 	public void deleteLogic(UserCourseSection entity);
 
-
+	/**
+	 * 用户id、课程id获取最新的学习记录
+	 */
+	public UserCourseSection queryLatest_BY_uid_cid(UserCourseSection queryEntity);
 
 }
 

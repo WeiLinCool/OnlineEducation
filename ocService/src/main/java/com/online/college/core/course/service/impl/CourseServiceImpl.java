@@ -78,6 +78,12 @@ public class CourseServiceImpl implements ICourseService{
 		entityDao.deleteLogic(entity);
 	}
 
+	@Override
+	public void update_study_count(Course entity) {
+		// TODO Auto-generated method stub
+		entityDao.update_study_count(entity);
+	}
+
 }
 
 

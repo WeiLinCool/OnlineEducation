@@ -364,4 +364,9 @@
 		WHERE id = #{id, jdbcType=INTEGER}
 	</update>
 
+	<update id="update_study_count" parameterType="com.online.college.core.course.domain.Course" flushCache="true">
+		UPDATE t_course
+		SET study_count = study_count + 1
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
 </mapper>

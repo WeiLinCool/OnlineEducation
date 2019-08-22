@@ -58,6 +58,12 @@ public class UserCourseSectionServiceImpl implements IUserCourseSectionService{
 		entityDao.deleteLogic(entity);
 	}
 
+	@Override
+	public UserCourseSection queryLatest_BY_uid_cid(UserCourseSection queryEntity) {
+		// TODO Auto-generated method stub
+		return entityDao.queryLatest_BY_uid_cid(queryEntity);
+	}
+
 
 
 }

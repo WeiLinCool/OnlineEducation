@@ -9,6 +9,7 @@ public class Course extends BaseEntity{
 
 	private static final long serialVersionUID = -935786327879089574L;
 
+	private Long id;
 	/**
 	*课程名称
 	**/
@@ -88,7 +89,13 @@ public class Course extends BaseEntity{
 	*学习人数
 	**/
 	private Integer studyCount;
-
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getName(){
 		return name;
 	}

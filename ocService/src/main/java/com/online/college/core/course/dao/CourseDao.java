@@ -56,7 +56,7 @@ public interface CourseDao {
 	**/
 	public void deleteLogic(Course entity);
 
-
+	public void update_study_count(Course entity);
 
 }
 

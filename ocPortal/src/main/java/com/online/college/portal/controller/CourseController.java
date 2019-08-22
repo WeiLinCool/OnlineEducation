@@ -124,6 +124,17 @@ public class CourseController {
 		userCourseSection.setUserId(SessionContext.getUserId());
 		userCourseSection.setCourseId(courseSection.getCourseId());
 		userCourseSection.setSectionId(courseSection.getId());
+		
+		UserCourseSection us = new UserCourseSection();
+		us.setUserId(SessionContext.getUserId());
+		us.setCourseId(courseSection.getCourseId());
+		UserCourseSection result1 = userCourseSectionService.queryLatest_BY_uid_cid(us);
+		if(null == result1){
+			Course course = new Course();
+			course.setId(courseSection.getCourseId());
+			courseService.update_study_count(course);
+		}
+		
 		UserCourseSection result = userCourseSectionService.queryLatest(userCourseSection);
 		
 		if(null == result){//如果没有，插入
@@ -131,7 +142,7 @@ public class CourseController {
 			userCourseSection.setCreateUser(SessionContext.getUsername());
 			userCourseSection.setUpdateTime(new Date());
 			userCourseSection.setUpdateUser(SessionContext.getUsername());
-			
+	
 			userCourseSectionService.createSelectivity(userCourseSection);
 		}else{
 			result.setUpdateTime(new Date());
