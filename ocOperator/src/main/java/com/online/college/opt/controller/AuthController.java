@@ -55,6 +55,14 @@ public class AuthController {
 			return mv;
 		}
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),EncryptUtil.encodedByMD5(user.getPassword()));
+
+		AuthUser u = authUserService.getByUsername(user.getUsername());
+		if(u.getAuthority() == 0){
+			ModelAndView mv = new ModelAndView("auth/login");
+			mv.addObject("errcode", 3);
+			return mv;
+		}
+		
 		try {
 			Subject currentUser = SecurityUtils.getSubject();
 			currentUser.login(token);//shiro实现登录
@@ -64,6 +72,7 @@ public class AuthController {
 			mv.addObject("errcode", 2);
 			return mv;
 		}
+		
 	}
 	
 	/**
