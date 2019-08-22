@@ -85,6 +85,12 @@ public class AuthUserServiceImpl implements IAuthUserService{
 		entityDao.deleteLogic(entity);
 	}
 
+	@Override
+	public List<String> getSchool() {
+		// TODO Auto-generated method stub
+		return entityDao.getSchool();
+	}
+
 
 
 }

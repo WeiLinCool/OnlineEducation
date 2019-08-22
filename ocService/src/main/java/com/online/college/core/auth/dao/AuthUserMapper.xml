@@ -233,7 +233,9 @@
 		WHERE id = #{id, jdbcType=INTEGER}
 	</select>
 	
-	
+	<select id="getSchool" resultType="java.lang.String">
+		SELECT name From t_consts_college
+	</select>
 	
 	<select id="getByUsernameAndPassword" parameterType="com.online.college.core.auth.domain.AuthUser"  resultMap="BeanResultMap">
 		SELECT 

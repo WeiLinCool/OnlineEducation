@@ -8,6 +8,50 @@
 		<meta name="description" content="">
 		<title>个人主页</title>
 		<#include "../common/res.html">
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				//定义一个数组来存放省份
+				var proArray = new Array("福建省", "台湾省", "日本省", "韩国省");
+
+				//本来 [] 中是数组下标,修改为数组元素的值
+				proArray["福建省"] = new Array("厦门", "福州", "漳州", "泉州");
+				proArray["台湾省"] = new Array("台北", "台中","台南");
+				proArray["日本省"] = new Array("东京", "大阪", "广岛", "横滨", "长崎");
+				proArray["韩国省"] = new Array("首尔", "济州岛");
+				
+			/* 	proArray["厦门"] = new Array("思明区", "湖里区", "集美区", "海沧区");
+				proArray["福州"] = new Array("鼓楼区", "台江区", "仓山区", "马尾区");
+				proArray["漳州"] = new Array("芗城区", "龙文区", "云霄", "漳浦");
+				proArray["泉州"] = new Array("惠安", "安溪", "永春", "永春");
+				
+				proArray["台北"] = new Array("新竹", "宜兰","苗栗");
+				proArray["台中"] = new Array("彰化", "南投");
+				proArray["台南"] = new Array("云林", "嘉义");
+				 */
+
+				$.each(proArray, function() {
+					$("#province").append("<Option value='" + this + "'>" + this + "</Option>");
+				})
+				//			$(function(){
+				//				$("select:first").append("<Option>"+proArray[1]+"<Option>");
+				//			})
+				$("#province").change(function() {
+				
+					$("#city").empty();
+					
+					$.each(proArray[this.value], function() {
+						$("#city").append("<option value='" + this + "' >" + this + "</option>");
+					});
+					
+				
+				});
+
+			});
+		</script> 
+		
+		
 	</head>
 
 	<body>
@@ -54,23 +98,36 @@
 						<li><label>学校</label> 
 							<!-- <input name="collegeName"  value="${authUser.collegeName!}" type="text"  class="input-text2"> -->
 							<select class="input-select" name="collegeName">
-								<option value="福州大学" <#if authUser.collegeName?? && authUser.collegeName == '福州大学'> selected="selected"</#if>>福州大学</option>
-								<option value="福建工程学院" <#if authUser.collegeName?? && authUser.collegeName == '福建工程学院'> selected="selected"</#if>>福建工程学院</option>
-								<option value="厦门大学" <#if authUser.collegeName?? && authUser.collegeName == '厦门大学'> selected="selected"</#if>>厦门大学</option>
-								<option value="福建医科大学" <#if authUser.collegeName?? && authUser.collegeName == '福建医科大学'> selected="selected"</#if>>福建医科大学</option>
-								<option value="北京大学" <#if authUser.collegeName?? && authUser.collegeName == '北京大学'> selected="selected"</#if>>北京大学</option>
+								<#if school??>
+									<#list school as sc>
+										<option value="${sc}" <#if authUser.collegeName?? && authUser.collegeName == '${sc}'> selected="selected"</#if>>${sc}</option>
+									</#list>
+								</#if>
 							</select>
 						</li>
 						<li><label>省份</label> 
 							<!-- <input name="province"  value="${authUser.province!}" type="text"  class="input-text2"> -->
-							<select class="input-select" name="province">
-								<option value="福建" <#if authUser.province?? && authUser.province == '福建'> selected="selected"</#if>>福建</option>
+							<select class="input-select" name="province" id="province">
+							<!-- 	<option value="福建" <#if authUser.province?? && authUser.province == '福建'> selected="selected"</#if>>福建</option>
 								<option value="台湾" <#if authUser.province?? && authUser.province == '台湾'> selected="selected"</#if>>台湾</option>
 								<option value="江苏" <#if authUser.province?? && authUser.province == '江苏'> selected="selected"</#if>>江苏</option>
 								<option value="浙江" <#if authUser.province?? && authUser.province == '浙江'> selected="selected"</#if>>浙江</option>
 								<option value="广东" <#if authUser.province?? && authUser.province == '广东'> selected="selected"</#if>>广东</option>
-							</select>
+							 -->
+							 </select>
 						</li>
+						<li><label>城市</label> 
+							<!-- <input name="province"  value="${authUser.city!}" type="text"  class="input-text2"> -->
+							<select class="input-select" name="city" id="city"> 
+								</select>
+						</li>
+						<!-- 
+						<li><label>区县</label> 
+							<input name="province"  value="${authUser.province!}" type="text"  class="input-text2">
+							<select class="input-select" name="district" id="district"> 
+							 </select>
+						</li> -->
+						
 						<li><label>学历</label> 
 							<select class="input-select" name="education">
 								<option value="本科" <#if authUser.education?? && authUser.education == '本科'> selected="selected"</#if>>本科</option>

@@ -25,6 +25,12 @@ public interface IAuthUserService {
 	**/
 	public AuthUser getById(Long id);
 	
+	
+	/**
+	 * 获取全部学校
+	 */
+	public List<String> getSchool();
+	
 	/**
 	*根据username和password获取
 	**/

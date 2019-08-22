@@ -13,6 +13,12 @@ public interface AuthUserDao {
 	public AuthUser getById(Long id);
 	
 	/**
+	 * 获取全部学校
+	 * @return
+	 */
+	public List<String> getSchool();
+	
+	/**
 	 * 根据username获取
 	 */
 	public AuthUser getByUsername(String username);
