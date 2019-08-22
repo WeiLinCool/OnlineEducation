@@ -1,6 +1,7 @@
 package com.online.college.portal.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,12 +110,14 @@ public class UserController {
 	public ModelAndView info(){
 		ModelAndView mv = new ModelAndView("user/info");
 		mv.addObject("curNav","info");
-		
+		List<String> school = authUserService.getSchool(); 
 		AuthUser authUser = authUserService.getById(SessionContext.getUserId());
 		if(null != authUser && StringUtils.isNotEmpty(authUser.getHeader())){
 			authUser.setHeader(QiniuStorage.getUrl(authUser.getHeader()));
 		}
 		mv.addObject("authUser",authUser);
+		mv.addObject("school",school);
+		System.out.println("school:"+school);
 		return mv;
 	}
 	/**
