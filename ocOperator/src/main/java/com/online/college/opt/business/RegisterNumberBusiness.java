@@ -5,6 +5,6 @@ import java.util.List;
 import com.online.college.opt.vo.RegisterNumberVO;
 
 public interface RegisterNumberBusiness {
-	List <RegisterNumberVO> queryRegisterNumberByDay();
+	List<Integer> queryRegisterNumberByDay();
 
 }
