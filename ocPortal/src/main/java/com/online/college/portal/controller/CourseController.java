@@ -91,11 +91,16 @@ public class CourseController {
 		userCourseSection.setCourseId(course.getId());
 		userCourseSection.setUserId(SessionContext.getUserId());
 		userCourseSection = this.userCourseSectionService.queryLatest(userCourseSection);
-		if(null != userCourseSection){
-			CourseSection curCourseSection = this.courseSectionService.getById(userCourseSection.getSectionId());
-			mv.addObject("curCourseSection", curCourseSection);
+		if(SessionContext.getUserId() != null){
+			if(null != userCourseSection){
+				CourseSection curCourseSection = this.courseSectionService.getById(userCourseSection.getSectionId());
+				mv.addObject("curCourseSection", curCourseSection);
+			}
 		}
-		
+		else {
+			CourseSection courseSection = new CourseSection();
+			courseSection.setName("未开始学习");
+		}
 		return mv;
 	}
 	
