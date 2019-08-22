@@ -17,6 +17,16 @@ public interface AuthUserDao {
 	 * @return
 	 */
 	public List<String> getSchool();
+	/**
+	 * 获取全部省份
+	 * @return
+	 */
+	public List<String> getProvince();
+	/**
+	 * 获取当前省份的城市
+	 * @return
+	 */
+	public List<String> getCity(String pro);
 	
 	/**
 	 * 根据username获取
@@ -69,6 +79,12 @@ public interface AuthUserDao {
 	*逻辑删除
 	**/
 	public void deleteLogic(AuthUser entity);
+	
+
+
+	
+	
+
 
 
 

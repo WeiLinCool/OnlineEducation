@@ -237,6 +237,15 @@
 		SELECT name From t_consts_college
 	</select>
 	
+	<select id="getProvince" resultType="java.lang.String">
+		SELECT name From t_auth_city Where parent_id=0
+	</select>
+	
+	
+	<select id="getCity"  resultType="java.lang.String">
+		SELECT name from t_auth_city where parent_id = (SELECT id  from t_auth_city where name = #{pro}) 
+	</select> 
+	
 	<select id="getByUsernameAndPassword" parameterType="com.online.college.core.auth.domain.AuthUser"  resultMap="BeanResultMap">
 		SELECT 
 		<include refid="All_Columns"  />

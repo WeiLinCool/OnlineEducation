@@ -1,5 +1,9 @@
 package com.online.college.portal.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
@@ -56,6 +60,14 @@ public class AuthController {
 			return JsonView.render(1);
 		}else{
 			authUser.setPassword(EncryptUtil.encodedByMD5(authUser.getPassword()));
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date date = df.parse(df.format(new Date()));
+				authUser.setCreateTime(date);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			authUserService.createSelectivity(authUser);
 			return JsonView.render(0);
 		}
