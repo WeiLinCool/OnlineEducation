@@ -19,8 +19,11 @@
 						<div class="course-title">${(course.name)!}</div>
 						
 						<div class="course-meta">
-							<a href="${s.base}/course/video/12.html" class="learn-btn" >继续学习</a>
-							
+							<#if video_id??>
+							<a href="${s.base}/course/video/${video_id!}.html" class="learn-btn" >继续学习</a>
+							<#else>
+							<a href="${s.base}/course/video/${video_id1!}.html" class="learn-btn" >开始学习</a>
+							</#if>
 							<div class="static-item"  >
 								<div class="meta">
 										上次学到

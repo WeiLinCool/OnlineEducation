@@ -18,6 +18,11 @@ public interface ICourseSectionService {
 	public List<CourseSection> queryAll(CourseSection queryEntity);
 	
 	/**
+	*courseid获取第一章节视频
+	**/
+	public CourseSection queryFirst_video(CourseSection queryEntity);
+	
+	/**
 	 * 获取课程章最大的sort
 	 */
 	public Integer getMaxSort(Long courseId);

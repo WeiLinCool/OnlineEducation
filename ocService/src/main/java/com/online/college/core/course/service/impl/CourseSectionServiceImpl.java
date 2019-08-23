@@ -85,5 +85,10 @@ public class CourseSectionServiceImpl implements ICourseSectionService{
 		return entityDao.getSortSectionMin(curCourseSection);
 	}
 
+	@Override
+	public CourseSection queryFirst_video(CourseSection queryEntity) {
+		// TODO Auto-generated method stub
+		return entityDao.queryFirst_video(queryEntity);
+	}
 }
 

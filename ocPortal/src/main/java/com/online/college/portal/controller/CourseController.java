@@ -95,6 +95,15 @@ public class CourseController {
 			if(null != userCourseSection){
 				CourseSection curCourseSection = this.courseSectionService.getById(userCourseSection.getSectionId());
 				mv.addObject("curCourseSection", curCourseSection);
+				if(userCourseSection.getSectionId()!=null){
+					mv.addObject("video_id", userCourseSection.getSectionId());
+				}
+			}
+			else {
+				CourseSection curCourseSection1 = new CourseSection();
+				curCourseSection1.setCourseId(course.getId());
+				CourseSection curCourseSection2 = this.courseSectionService.queryFirst_video(curCourseSection1);
+				mv.addObject("video_id1", curCourseSection2.getId());
 			}
 		}
 		else {
