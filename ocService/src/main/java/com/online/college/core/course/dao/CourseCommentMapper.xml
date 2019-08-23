@@ -95,6 +95,7 @@
 		WHERE t.id = tc.course_id
 		AND t.username = #{param1.username}
 		AND tc.del = 0
+		AND tc.type = 1
 		ORDER BY tc.id DESC
 		LIMIT #{param2.startIndex, jdbcType=INTEGER} , #{param2.pageSize, jdbcType=INTEGER} 
 	</select>

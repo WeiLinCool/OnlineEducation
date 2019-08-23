@@ -4,7 +4,11 @@
 <div class="comment clearfix">
 	<div class="comment-header"><img class="lecturer-uimg" src="${s.base}/res/i/header.jpg"></div>
 	<div class="comment-main">
-		<div class="user-name">${item.username!} 评论道：</div>
+		<#if item.type == 0>
+			<div class="user-name">${item.username!} 评论道：</div>
+		<#elseif item.type == 1>
+			<div class="user-name">${item.username!} 提问：</div>
+		</#if>
 		<#if item.refContent?? && item.refContent != ''>
 		<div style="margin-top:5px;padding: 5px;border:1px solid #ccc;background-color:#eee;">
 			${item.refContent!}
@@ -18,7 +22,7 @@
 			<a href="${s.base}/course/video/${item.id!}.html" >${item.sectionTitle!}</a>
 		</div>
 	</div>
-</div>	
-</#list>	
+</div>
+</#list>
 <#include "./common/tailPage.html">
 </#if>

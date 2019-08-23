@@ -86,6 +86,7 @@ public class CourseCommentController {
 				if(null != courseSection){
 					entity.setRefContent(refComment.getContent());
 					entity.setRefId(entity.getRefId());
+					entity.setType(1);
 					entity.setCourseId(refComment.getCourseId());
 					entity.setSectionId(refComment.getSectionId());
 					entity.setSectionTitle(courseSection.getName());
