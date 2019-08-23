@@ -61,7 +61,7 @@
 		SELECT 
 		cs.course_id, cs.section_id , f.follow_id, 
 		c.name as courseName, s.name as sectionName, 
-		u.username,u.header,cs.create_time
+		u.username,u.header,cs.create_time,cs.update_time
 		FROM 
 		t_user_follows f ,t_user_course_section cs, t_course c , t_course_section s, t_auth_user u
 		WHERE f.user_id = #{param1.userId, jdbcType=INTEGER} 

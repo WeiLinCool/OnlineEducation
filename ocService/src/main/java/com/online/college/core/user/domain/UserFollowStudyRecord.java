@@ -51,6 +51,19 @@ public class UserFollowStudyRecord {
 	 * 创建时间
 	 */
 	private Date createTime;
+	
+	/**
+	 * 更新时间
+	 */
+	private Date updateTime;
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
 	public Long getCourseId() {
 		return courseId;
