@@ -57,13 +57,22 @@
 								  var s1=day.format("yyyy-MM-dd");
 								  categories[i]=s1;
 								} 
-								 console.log(categories);  
-						
-								//var categories =  ['03-19', '03-20', '03-21', '03-22', '03-23', '03-24','03-25', '03-26', '03-27', '03-28'];
+					        var data = new Array();
+						    $.getJSON("registerView", function(my) {
+						     
+						      for (var i = 0; i < my.length; i++) {
+				                data.push(my[i]);
+			                  }
+						      
+								});
 								
-								//var data = ${registerNumber};
+	                                
+	                                
+	                              
+	                              
 								$(function () {
 								    $('#report-1').highcharts({
+								    
 								        title: {
 								            text: '用户注册增长人数(10天)',
 								            x: -20 //center

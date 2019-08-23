@@ -31,18 +31,26 @@ public class RegisterNumberBusinessImpl implements RegisterNumberBusiness{
 		 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		 String time = df.format(new Date().getTime()-10*24*60*60*1000);
+		 
 		 for(int i =10;i>0;i--){
-			 RegisterNumberVO re= new RegisterNumberVO();
+			// RegisterNumberVO re= new RegisterNumberVO();
 			 Date thedate;
 			 Date thedate2;
 			 Integer number = null;
 			try {
+				
+				
 				thedate = df.parse(df.format(new Date().getTime()-i*24*60*60*1000));
 				thedate2 = df.parse(df.format(new Date().getTime()-(i-1)*24*60*60*1000));
-				re.setData(thedate);
+				
+				//re.setData(thedate);
 				//根据日期 查询注册人数
+				
+				 
+				  System.out.println(thedate+" ss "+thedate2);
 				  number=iauthUserService.registerNumber(thedate,thedate2);
-				 System.out.println(number);
+				  System.out.println(number);
+				
 				 //
 				 //re.setRegisternumber(number);
 				
