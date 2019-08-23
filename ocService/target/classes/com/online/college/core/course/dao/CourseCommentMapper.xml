@@ -90,7 +90,7 @@
 	
 	<select id="queryMyQAItemsPage" resultMap="BeanResultMap">
 		SELECT tc.id, tc.username, tc.course_id, tc.content, tc.section_title,
-		tc.section_id , tc.create_time, tc.ref_content, t.name as course_name
+		tc.section_id , tc.create_time , tc.update_time , tc.ref_content, t.name as course_name
 		FROM t_course t , t_course_comment tc 
 		WHERE t.id = tc.course_id
 		AND t.username = #{param1.username}
