@@ -1,9 +1,11 @@
 package com.online.college.portal.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 
+import com.google.gson.Gson;
 import com.online.college.common.page.TailPage;
 import com.online.college.common.storage.QiniuStorage;
 import com.online.college.common.util.EncryptUtil;
@@ -126,15 +129,35 @@ public class UserController {
 		if (null != authUser && StringUtils.isNotEmpty(authUser.getHeader())) {
 			authUser.setHeader(QiniuStorage.getUrl(authUser.getHeader()));
 		}
-
+		mv.addObject("city", city);
 		mv.addObject("authUser", authUser);
 		mv.addObject("school", school);
 		mv.addObject("province", province);
-		mv.addObject("city", city);
-		
+		System.out.println(mv);
 		return mv;
 	}
 
+	@RequestMapping("/city")
+	public void getcity(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		String pro =null;
+		Gson gson = new Gson();
+		PrintWriter out = response.getWriter();
+		if (request.getParameter("province2") != null) {
+			pro = request.getParameter("province2");
+		}
+		System.out.println(pro);
+		List<String> city = authUserService.getCity(pro);
+		String mygson = gson.toJson(city);
+		System.out.println("City:" + city);
+		System.out.println("mygson:" +mygson);
+		out.print(mygson);
+		out.flush();
+		out.close();
+	}
+	
+	
+	
+	
 	/**
 	 * 保存信息
 	 */

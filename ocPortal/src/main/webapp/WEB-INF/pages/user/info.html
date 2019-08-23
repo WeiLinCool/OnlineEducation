@@ -86,7 +86,7 @@
 							<#if authUser.city??>
 										<option value="${authUser.city!}">${authUser.city!}</option>
 							</#if>
-							 <#if city??>
+							<#if city??>
 									<#list city as c>
 										<option value="${c}" <#if authUser.city?? && authUser.city=='${c}'> selected="selected"</#if>>${c}</option>
 									</#list>
@@ -169,13 +169,19 @@
 			function citiajax(){
 					$.ajax({
            	type: "get",
-            url: "${s.base}/user/info.html?province2="+$("#province").val(),
+            url: "${s.base}/user/city.html?province2="+$("#province").val(),
             dataType: "json",
             success: function (data) {
-            		data = $.parseJSON(data);
-            		console.log("a");
+            		//var data = $.parseJSON(data);
+            		
+            		console.log("1234657987989");
+            		console.log(data,typeof data);
+            		for(i in data){
+            			$("#city").append("<option value ="+data[i]+">"+data[i]+"</option>");
+            		}
                 },
             error:function (xhr) {
+            		alert("操作频繁！请稍后再试。");
             }
        	 });
 			
