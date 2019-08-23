@@ -1,5 +1,6 @@
 package com.online.college.core.auth.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -101,6 +102,14 @@ public class AuthUserServiceImpl implements IAuthUserService{
 	public List<String> getCity(String pro) {
 		// TODO Auto-generated method stub
 		return entityDao.getCity(pro);
+	}
+
+	
+	
+	@Override
+	public Integer registerNumber(Date thedate, Date thedate2) {
+		// TODO Auto-generated method stub
+		return entityDao.registerNumber(thedate, thedate2);
 	}
 
 

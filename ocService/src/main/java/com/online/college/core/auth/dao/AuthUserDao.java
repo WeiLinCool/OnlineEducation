@@ -1,5 +1,6 @@
 package com.online.college.core.auth.dao;
 
+import java.util.Date;
 import java.util.List;
 import com.online.college.common.page.TailPage;
 import com.online.college.core.auth.domain.AuthUser;
@@ -81,8 +82,13 @@ public interface AuthUserDao {
 	public void deleteLogic(AuthUser entity);
 	
 
-
-	
+    /**
+    * 报表查询统计注册人数
+    * @param thedate
+    * @param thedate2
+    * @return
+    */
+	public Integer registerNumber(Date thedate, Date thedate2);
 	
 
 

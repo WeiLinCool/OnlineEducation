@@ -1,5 +1,6 @@
 package com.online.college.core.auth.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.online.college.common.page.TailPage;
@@ -74,5 +75,14 @@ public interface IAuthUserService {
 	 *
 	 */
 	public List<String> getCity(String pro);
+	
+	/**
+	 * 报表查询注册人数根据时间
+	 * @param thedate
+	 * @param thedate2
+	 * @return
+	 */
+
+	public Integer registerNumber(Date thedate, Date thedate2);
 
 }
