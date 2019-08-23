@@ -12,8 +12,8 @@
 		</#if>
 		<div class="comment-content">${item.content!}</div>
 		<div class="comment-footer">
-			<#if item.createTime??>
-			<span>时间：${item.createTime?string('yyyy-MM-dd')} </span>
+			<#if item.updateTime??>
+			<span>时间：${item.updateTime?string('yyyy-MM-dd HH:mm:ss')} </span>
 			</#if>
 			<a href="${s.base}/course/video/${item.id!}.html" >${item.sectionTitle!}</a>
 		</div>
