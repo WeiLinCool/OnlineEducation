@@ -50,7 +50,8 @@
 	<select id="queryPage" resultType="com.online.college.core.user.domain.UserCollections">
 		SELECT uc.object_id, uc.id, c.name, uc.create_time, uc.classify, uc.create_time
 		FROM t_user_collections uc , t_course c
-		WHERE uc.object_id = c.id
+		WHERE uc.user_id = #{param1.userId, jdbcType=INTEGER}
+		AND uc.object_id = c.id
 		AND uc.classify = 1
 		ORDER BY id DESC 
 		LIMIT #{param2.startIndex, jdbcType=INTEGER} , #{param2.pageSize, jdbcType=INTEGER} 
