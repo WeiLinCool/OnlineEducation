@@ -69,15 +69,16 @@ public class CourseController {
 		ModelAndView mv = new ModelAndView("learn");
 		List<CourseSectionVO> chaptSections = this.courseBusiness.queryCourseSection(courseId);
 		mv.addObject("course", course);
+		System.out.println("course:"+course);
 		mv.addObject("chaptSections", chaptSections);
-		
+		System.out.println("chaptSections:"+chaptSections);
 		//获取讲师
 		AuthUser courseTeacher = this.authUserService.getByUsername(course.getUsername());
 		if(null != courseTeacher && StringUtils.isNotEmpty(courseTeacher.getHeader())){
 			courseTeacher.setHeader(QiniuStorage.getUrl(courseTeacher.getHeader()));
 		}
 		mv.addObject("courseTeacher", courseTeacher);
-		
+		System.out.println("courseTeacher"+courseTeacher);
 		//获取推荐课程
 		CourseQueryDto queryEntity = new CourseQueryDto();
 		queryEntity.descSortField("weight");
@@ -85,7 +86,7 @@ public class CourseController {
 		queryEntity.setSubClassify(course.getSubClassify());
 		List<Course> recomdCourseList = this.courseService.queryList(queryEntity);
 		mv.addObject("recomdCourseList", recomdCourseList);
-		
+		System.out.println("recomdCourseList"+recomdCourseList);
 		//当前学习的章节
 		UserCourseSection userCourseSection = new UserCourseSection();
 		userCourseSection.setCourseId(course.getId());
@@ -95,15 +96,19 @@ public class CourseController {
 			if(null != userCourseSection){
 				CourseSection curCourseSection = this.courseSectionService.getById(userCourseSection.getSectionId());
 				mv.addObject("curCourseSection", curCourseSection);
+				System.out.println("curCourseSection"+curCourseSection);
 				if(userCourseSection.getSectionId()!=null){
 					mv.addObject("video_id", userCourseSection.getSectionId());
+					System.out.println("video_id"+userCourseSection.getSectionId());
 				}
 			}
 			else {
 				CourseSection curCourseSection1 = new CourseSection();
 				curCourseSection1.setCourseId(course.getId());
 				CourseSection curCourseSection2 = this.courseSectionService.queryFirst_video(curCourseSection1);
+				if(curCourseSection2!=null){
 				mv.addObject("video_id1", curCourseSection2.getId());
+				System.out.println("video_id1"+curCourseSection2.getId());}
 			}
 		}
 		else {

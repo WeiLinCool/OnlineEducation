@@ -44,6 +44,7 @@ public class CourseBusinessImpl implements ICourseBusiness {
 				BeanUtils.copyProperties(item, vo);
 				tmpMap.put(vo.getId(), vo);
 			}else{
+				if(item!=null)
 				tmpMap.get(item.getParentId()).getSections().add(item);//小节添加到大章中
 			}
 		}
