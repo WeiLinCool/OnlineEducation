@@ -15,6 +15,20 @@
 		GROUP BY date_format(create_time,'%Y-%m-%d')
 		ORDER BY create_time
 	</select>
+	
+	
+	<select id="queryRegisterStatics" parameterType="com.online.college.core.statics.domain.RegisterStaticsDto" 
+		resultType="com.online.college.core.statics.domain.RegisterStaticsDto">
+		SELECT count(id) totalCount , date_format(create_time,'%Y-%m-%d') as dateStr  
+		FROM t_auth_user
+		WHERE 
+		<![CDATA[ 
+			 CREATE_TIME >= #{startDate} 
+			AND CREATE_TIME <= #{endDate} 
+		]]>
+		GROUP BY date_format(create_time,'%Y-%m-%d')
+		ORDER BY create_time
+	</select> 
 
 	
 </mapper>

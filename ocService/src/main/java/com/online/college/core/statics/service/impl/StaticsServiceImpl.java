@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.online.college.core.statics.dao.CourseStudyStaticsDao;
 import com.online.college.core.statics.domain.CourseStudyStaticsDto;
+import com.online.college.core.statics.domain.RegisterStaticsDto;
 import com.online.college.core.statics.domain.StaticsVO;
 import com.online.college.core.statics.service.IStaticsService;
 
@@ -36,6 +37,29 @@ public class StaticsServiceImpl implements IStaticsService {
 			}
 			returnVo.setCategories(categories);
 			returnVo.setData(data);
+		}
+		
+		return returnVo;
+	}
+
+	@Override
+	public StaticsVO queryRegisterStatics(RegisterStaticsDto queryEntity) {
+		// TODO Auto-generated method stub
+		List<RegisterStaticsDto> list = entityDao.queryRegisterStatics(queryEntity);
+		
+		StaticsVO returnVo = new StaticsVO();
+		List<String> categories = new ArrayList<String>();
+		List<Integer> data = new ArrayList<Integer>();
+		
+		if(CollectionUtils.isNotEmpty(list)){
+			for(RegisterStaticsDto item:list){
+				categories.add(item.getDateStr());
+				data.add(item.getTotalCount());
+				
+			}
+			returnVo.setCategories(categories);
+			returnVo.setData(data);
+			
 		}
 		
 		return returnVo;

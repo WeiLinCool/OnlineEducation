@@ -1,6 +1,7 @@
 package com.online.college.core.statics.service;
 
 import com.online.college.core.statics.domain.CourseStudyStaticsDto;
+import com.online.college.core.statics.domain.RegisterStaticsDto;
 import com.online.college.core.statics.domain.StaticsVO;
 
 /**
@@ -12,4 +13,10 @@ public interface IStaticsService {
 	**/
 	public StaticsVO queryCourseStudyStatistics(CourseStudyStaticsDto queryEntity);
 	
+	/**
+	 * 统计注册情况
+	 * @param queryEntity
+	 * @return
+	 */
+	public StaticsVO queryRegisterStatics(RegisterStaticsDto queryEntity);
 }

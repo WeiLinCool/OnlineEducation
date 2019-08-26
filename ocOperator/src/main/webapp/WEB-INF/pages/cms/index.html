@@ -32,47 +32,16 @@
                         <a href="#tablewidget" class="block-heading" data-toggle="collapse">用户注册增长</a>
 						<div id="report-1" style="width:100%;height:400px;"></div>
 						<script type="text/javascript">
-						Date.prototype.format = function (fmt) {
-                               var o = {
-                                "M+": this.getMonth() + 1, //月份
-                                "d+": this.getDate(), //日
-                                "h+": this.getHours(), //小时
-                                "m+": this.getMinutes(), //分
-                                 "s+": this.getSeconds(), //秒
-                                "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-                                "S": this.getMilliseconds() //毫秒
-                               };
-                               if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-                                   for (var k in o)
-                                                if (new RegExp("(" + k + ")").test(fmt)) 
-                                                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-                                                  return fmt;
-                                    }
-						
-								var categories=[];
-								var day=new Date();
-								 day.setDate(day.getDate()-10);
-								 for(var i=0;i<10;i++){
-							      day.setDate(day.getDate()+1);
-								  var s1=day.format("yyyy-MM-dd");
-								  categories[i]=s1;
-								} 
-					        var data = new Array();
-						    $.getJSON("registerView", function(my) {
-						     
-						      for (var i = 0; i < my.length; i++) {
-				                data.push(my[i]);
-			                  }
-						      
-								});
+								<#if vo??>
 								
-	                                
-	                                
-	                              
-	                              
+								
 								$(function () {
+								
+								var vo=${vo!};
+								var categories =  vo.categories;
+								var data = vo.data;
+								
 								    $('#report-1').highcharts({
-								    
 								        title: {
 								            text: '用户注册增长人数(10天)',
 								            x: -20 //center
@@ -112,6 +81,7 @@
 								        }]
 								    });
 								});
+								</#if>
 							</script>
                     </div>
                     
