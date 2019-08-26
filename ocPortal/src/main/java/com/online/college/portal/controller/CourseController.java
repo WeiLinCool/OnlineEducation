@@ -105,10 +105,11 @@ public class CourseController {
 			else {
 				CourseSection curCourseSection1 = new CourseSection();
 				curCourseSection1.setCourseId(course.getId());
-				CourseSection curCourseSection2 = this.courseSectionService.queryFirst_video(curCourseSection1);
-				if(curCourseSection2!=null){
-				mv.addObject("video_id1", curCourseSection2.getId());
-				System.out.println("video_id1"+curCourseSection2.getId());}
+				Integer videoid = this.courseSectionService.queryFirst_video(curCourseSection1);
+				if(videoid!=null){
+					mv.addObject("video_id1", videoid);
+					System.out.println("video_id1"+videoid);
+				}
 			}
 		}
 		else {

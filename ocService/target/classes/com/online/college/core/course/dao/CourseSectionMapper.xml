@@ -55,13 +55,10 @@
 		LIMIT #{param2.startIndex, jdbcType=INTEGER} , #{param2.pageSize, jdbcType=INTEGER} 
 	</select>
 
-	<select id="queryFirst_video" parameterType="com.online.college.core.course.domain.CourseSection" resultMap="BeanResultMap">
-		select
-		<include refid="All_Columns" />
-		FROM t_course_section
-		where course_id = #{courseId, jdbcType=INTEGER}
-		and parent_id = 1
-		and sort = 1
+	<select id="queryFirst_video" parameterType="com.online.college.core.course.domain.CourseSection" resultType="java.lang.Integer">
+		select t2.id
+		from t_course_section t1, t_course_section t2
+		where t1.course_id = #{courseId, jdbcType=INTEGER} and t2.parent_id = t1.id and t1.parent_id = 0 and t2.sort = 1 and t1.sort = 1
 	</select>
 
 	<select id="getById" parameterType="java.lang.Long" resultType="com.online.college.core.course.domain.CourseSection">

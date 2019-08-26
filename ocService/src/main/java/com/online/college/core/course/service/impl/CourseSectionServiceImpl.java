@@ -86,7 +86,7 @@ public class CourseSectionServiceImpl implements ICourseSectionService{
 	}
 
 	@Override
-	public CourseSection queryFirst_video(CourseSection queryEntity) {
+	public Integer queryFirst_video(CourseSection queryEntity) {
 		// TODO Auto-generated method stub
 		return entityDao.queryFirst_video(queryEntity);
 	}
