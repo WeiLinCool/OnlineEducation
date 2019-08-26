@@ -19,8 +19,10 @@ import com.online.college.common.web.SessionContext;
 import com.online.college.core.auth.domain.AuthUser;
 import com.online.college.core.auth.service.IAuthUserService;
 import com.online.college.core.course.domain.Course;
+import com.online.college.core.course.domain.CourseBuy;
 import com.online.college.core.course.domain.CourseQueryDto;
 import com.online.college.core.course.domain.CourseSection;
+import com.online.college.core.course.service.ICourseBuyService;
 import com.online.college.core.course.service.ICourseSectionService;
 import com.online.college.core.course.service.ICourseService;
 import com.online.college.core.user.domain.UserCourseSection;
@@ -49,6 +51,9 @@ public class CourseController {
 	
 	@Autowired
 	private IUserCourseSectionService userCourseSectionService;
+	
+	@Autowired
+	private ICourseBuyService courseBuyService;
 	
 	
 	/**
@@ -92,7 +97,18 @@ public class CourseController {
 		userCourseSection.setCourseId(course.getId());
 		userCourseSection.setUserId(SessionContext.getUserId());
 		userCourseSection = this.userCourseSectionService.queryLatest(userCourseSection);
+		boolean flag = false;
 		if(SessionContext.getUserId() != null){
+			if(course.getPrice() != null){
+				List<CourseBuy> list = courseBuyService.getById(SessionContext.getUserId());
+				for (CourseBuy courseBuy : list) {
+					if(courseBuy.getCourseId() == courseId){
+						flag = true;
+						System.out.println("Flag :" + flag);
+						break;
+					}
+				}
+			}
 			if(null != userCourseSection){
 				CourseSection curCourseSection = this.courseSectionService.getById(userCourseSection.getSectionId());
 				mv.addObject("curCourseSection", curCourseSection);
@@ -116,6 +132,7 @@ public class CourseController {
 			CourseSection courseSection = new CourseSection();
 			courseSection.setName("未开始学习");
 		}
+		mv.addObject("flag", flag);
 		return mv;
 	}
 	

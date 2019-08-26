@@ -620,6 +620,22 @@ a:focus{outline:none;}
     position: relative;
     top:-20px;
 }
+
+.learn-btn-money {
+    display: inline-block;
+    border-radius:4px;
+    text-align: center;
+    background-color: #ff0000;
+    color: #FFF;
+    width: 137px;
+    height: 48px;
+    line-height:48px;
+    font-size: 16px;
+    position: relative;
+    top:-20px;
+    font-weight:800;
+}
+
 .learn-btn:hover{
 	color: #FFF;
 }

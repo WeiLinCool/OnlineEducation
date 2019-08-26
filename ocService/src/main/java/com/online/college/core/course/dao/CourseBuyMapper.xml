@@ -13,22 +13,19 @@
 		<result column="update_time" property="updateTime"  jdbcType="TIMESTAMP" />
 		<result column="update_user" property="updateUser"  jdbcType="VARCHAR" />
 		<result column="del" property="del"  jdbcType="TINYINT" />
-		
-		<result column="header" property="header"  jdbcType="VARCHAR" />
-		<result column="course_name" property="courseName"  jdbcType="VARCHAR" />
 	</resultMap> 
 
 
 	<sql id="All_Columns">
 		user_id, course_id, price, create_time, create_user, update_time, 
-		update_user, del, id 
+		update_user, del, id
 	</sql>
 
 	<select id="getById" parameterType="java.lang.Long" resultType="com.online.college.core.course.domain.CourseBuy">
 		SELECT 
 		<include refid="All_Columns"  />
 		FROM t_course_buy
-		WHERE id = #{id, jdbcType=INTEGER}
+		WHERE user_id = #{userId, jdbcType=INTEGER}
 	</select>
 
 	<insert id="create" parameterType="com.online.college.core.course.domain.CourseBuy" flushCache="true"  useGeneratedKeys="true" keyProperty="id"  >
