@@ -376,11 +376,6 @@
 		WHERE id = #{id, jdbcType=INTEGER}
 	</update>
 	
-	<select id="registerNumber" flushCache="true">
-	select count(*)
-     from t_auth_user
-      where create_time>=#{0} and create_time<#{1}
-	</select>
-	
+
 
 </mapper>
