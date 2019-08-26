@@ -21,7 +21,7 @@ public interface CourseSectionDao {
 	/**
 	*courseid获取第一章节视频
 	**/
-	public CourseSection queryFirst_video(CourseSection queryEntity);
+	public Integer queryFirst_video(CourseSection queryEntity);
 	
 	/**
 	 * 
