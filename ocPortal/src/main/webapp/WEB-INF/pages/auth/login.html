@@ -50,6 +50,12 @@
 							<span style="color:red;">该账户已被禁用</span>
 						</li>
 						</#if>
+						<#if errcode ?? && errcode == 4>
+						<li style="text-align: left;">
+							<label style="background-color:#FFF;"></label>
+							<span style="color:red;">该账户不存在</span>
+						</li>
+						</#if>
 						
 						<li class="clearfix" style="margin-top: 20px;">
 							<input type="submit" value="登录" class="btn"style="margin-right:20px;">

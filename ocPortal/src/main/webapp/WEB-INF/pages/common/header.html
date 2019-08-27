@@ -81,12 +81,6 @@
 						<img  id="indeityImgHead1"  onclick="reloadIndityImg('indeityImgHead1');" src="${s.base}/tools/identiry/code.html" style="width:80px;height:33px;float:left;margin-left:10px;float:left;border-radius:5px;"/>
 					  	<span id="loginError" style="margin-left:10px;height:33px;line-height:33px;color:red;display:none;">错误信息</span>
 					  </div>
-                      <div class="form-group">
-                          <label>
-                           <input type="checkbox" value="1" id="checkbox1" name="rememberMe">
-                           <span class="text" style="color: #787D82;font-size: 14px;">下次自动登录</span>
-                          </label>
-                      </div>
                       <a href="javascript:void(0)">
                       	<div onclick="doAjaxLogin();" class="header-login-btn">登 录</div>
                       </a>
@@ -249,6 +243,9 @@
 				}else if(resp.errcode == 3){
 					$('#loginError').show();
 					$('#loginError').html("账户被禁用！");
+				}else if(resp.errcode == 4){
+					$('#loginError').show();
+					$('#loginError').html("账户不存在！");
 				}
 			},
 			error : function(xhr) {

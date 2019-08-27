@@ -97,6 +97,8 @@ public class AuthController {
 		Subject currentUser = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),EncryptUtil.encodedByMD5(user.getPassword()));
 		AuthUser u = authUserService.getByUsername(user.getUsername());
+		if(u == null)
+			return JsonView.render(4, "该账户不存在！");
 		if(u.getStatus() == 0)
 			return JsonView.render(3, "该账户已被禁用！");
 		try {
@@ -126,6 +128,11 @@ public class AuthController {
 		}
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),EncryptUtil.encodedByMD5(user.getPassword()));
 		AuthUser u = authUserService.getByUsername(user.getUsername());
+		if(u == null){
+			ModelAndView mv = new ModelAndView("auth/login");
+			mv.addObject("errcode", 4);
+			return mv;
+		}
 		if(u.getStatus() == 0){
 			ModelAndView mv = new ModelAndView("auth/login");
 			mv.addObject("errcode", 3);
