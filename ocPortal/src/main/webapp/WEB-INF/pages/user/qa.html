@@ -35,7 +35,11 @@
 						
 						<div class="comment-content" style="padding-left:20px;">
 							<div style="margin-bottom:5px;">
-								<span style="font-weight:bold">${item.username!} 评论道： </span>
+								<#if item.refContent?? && item.refContent != ''>
+									<span style="font-weight:bold">${item.username!} 回答： </span>
+								<#else>
+									<span style="font-weight:bold">${item.username!} 提问： </span>
+								</#if>
 							</div>
 							
 							<#if item.refContent?? && item.refContent != ''>
