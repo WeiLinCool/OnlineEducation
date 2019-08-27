@@ -18,6 +18,6 @@ public class RegisterNumberVO {
 	public void setRegisternumber(Integer registernumber) {
 		this.registernumber = registernumber;
 	}
-
+	
 	
 }
