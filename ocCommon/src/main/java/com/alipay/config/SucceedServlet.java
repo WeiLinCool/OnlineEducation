@@ -36,7 +36,7 @@ public class SucceedServlet extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		System.out.println("交易成功！");
 	}
 
