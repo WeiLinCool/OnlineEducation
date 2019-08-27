@@ -94,7 +94,16 @@
 									<span>·</span>${item.studyCount!}人在学
 									</div>
 									<#else>
-									<div class="course-card-info">${item.studyCount!}人在学</div>
+									<div class="course-card-info">
+									<#if item.level == 1>
+									初级
+									<#elseif item.level == 2>
+									中级
+									<#else>
+									高级
+									</#if>
+									<span>·</span>${item.studyCount!}人在学
+									</div>
 									<div class="course-card-price">￥${item.price!}</div>
 									</#if>
 								</div>

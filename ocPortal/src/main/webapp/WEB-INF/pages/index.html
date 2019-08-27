@@ -122,7 +122,16 @@
 								<h3 class="course-card-name"  title="${item.name!}">${item.name!}</h3>
 								<p class="course-card-brief" title="${item.brief!}">${item.brief!}</p>
 								<div class="course-card-bottom">
-									<div class="course-card-info">${item.studyCount!}人在学</div>
+									<div class="course-card-info">
+									<#if item.level == 1>
+									初级
+									<#elseif item.level == 2>
+									中级
+									<#else>
+									高级
+									</#if>
+									<span>·</span>${item.studyCount!}人在学
+									</div>
 									<div class="course-card-price">￥${item.price!}</div>
 								</div>
 							</div>
@@ -242,7 +251,16 @@
 											<span>·</span>${item.studyCount!}人在学
 											</div>
 											<#else>
-											<div class="course-card-info">${item.studyCount!}人在学</div>
+											<div class="course-card-info">
+											<#if item.level == 1>
+											初级
+											<#elseif item.level == 2>
+											中级
+											<#else>
+											高级
+											</#if>
+											<span>·</span>${item.studyCount!}人在学
+											</div>
 											<div class="course-card-price">￥${item.price!}</div>
 											</#if>
 										</div>
