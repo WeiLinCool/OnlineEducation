@@ -101,11 +101,25 @@
 						<ul class="chapter-sub">
 							<#if item.sections??>
 							<#list item.sections as section>
-							<a href="${s.base}/course/video/${section.id!}.html" > 
-								<li class="chapter-sub-li">
-									<i class="icon-video">▶</i>${section.name!} (${section.time!})
-								</li>
-							</a>
+							<#if course.price == 0>
+								<a href="${s.base}/course/video/${section.id!}.html" > 
+									<li class="chapter-sub-li">
+										<i class="icon-video">▶</i>${section.name!} (${section.time!})
+									</li>
+								</a>
+							<#elseif flag == true && course.price != 0>
+								<a href="${s.base}/course/video/${section.id!}.html" > 
+									<li class="chapter-sub-li">
+										<i class="icon-video">▶</i>${section.name!} (${section.time!})
+									</li>
+								</a>
+							<#else>
+								<a href="#modal-container-1" data-toggle="modal" > 
+									<li class="chapter-sub-li">
+										<i class="icon-video">▶</i>${section.name!} (${section.time!})
+									</li>
+								</a>
+							</#if>
 							</#list>
 							</#if>
 						</ul>
@@ -115,6 +129,38 @@
 					
 				</div>
 				<!-- 章节信息 - end -->
+				
+				<!-- ##### 隐藏表单  修改用户信息 开始 #####-->
+
+	<div class="col-md-12 column" >
+		<div class="modal fade" id="modal-container-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h6 class="modal-title" id="myModalLabel">提示</h6>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+					</div>
+					<div>
+					
+						<br>
+							<p><h4>您尚未购买本课程！</h4></p>
+						<br>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	</div>
+	<!-- #####隐藏表单  修改用户信息 结束 ##### -->
 				
 				<!-- 评论区 start -->
 				<div id="commentQA">
