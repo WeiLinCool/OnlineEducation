@@ -16,7 +16,6 @@
 			<div class="types-block clearfix" style="text-align: center;">
 				<h3 class="types-title">登录</h3>
 				<form class="oc-form" id="infoForm" style="text-align: center;border: 1px solid #CCC;width: 600px;margin:0 auto;padding:20px;" method="post" action="${s.base}/auth/doLogin.html">
-						<li>请用：wangyangming/11111 登录</li>
 						<li><label>用户名</label> 
 							<input name="username"  value="" type="text"  class="input-text"  placeholder="请输入用户名" >
 						</li>
@@ -43,6 +42,12 @@
 						<li style="text-align: left;">
 							<label style="background-color:#FFF;"></label>
 							<span style="color:red;">用户名密码错</span>
+						</li>
+						</#if>
+						<#if errcode ?? && errcode == 3>
+						<li style="text-align: left;">
+							<label style="background-color:#FFF;"></label>
+							<span style="color:red;">该账户已被禁用</span>
 						</li>
 						</#if>
 						

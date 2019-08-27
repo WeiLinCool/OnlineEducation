@@ -246,6 +246,9 @@
 					$('#loginError').show();
 					$('#loginError').html("验证码输入错误！");
 					reloadIndityImg('indeityImgHead1');
+				}else if(resp.errcode == 3){
+					$('#loginError').show();
+					$('#loginError').html("账户被禁用！");
 				}
 			},
 			error : function(xhr) {

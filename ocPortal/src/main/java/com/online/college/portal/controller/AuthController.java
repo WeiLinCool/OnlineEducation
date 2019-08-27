@@ -96,6 +96,9 @@ public class AuthController {
 		}
 		Subject currentUser = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),EncryptUtil.encodedByMD5(user.getPassword()));
+		AuthUser u = authUserService.getByUsername(user.getUsername());
+		if(u.getStatus() == 0)
+			return JsonView.render(3, "该账户已被禁用！");
 		try {
 			if(rememberMe != null && rememberMe == 1){
 				token.setRememberMe(true);
@@ -122,6 +125,12 @@ public class AuthController {
 			return mv;
 		}
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),EncryptUtil.encodedByMD5(user.getPassword()));
+		AuthUser u = authUserService.getByUsername(user.getUsername());
+		if(u.getStatus() == 0){
+			ModelAndView mv = new ModelAndView("auth/login");
+			mv.addObject("errcode", 3);
+			return mv;
+		}
 		try {
 			Subject currentUser = SecurityUtils.getSubject();
 			currentUser.login(token);//shiro实现登录

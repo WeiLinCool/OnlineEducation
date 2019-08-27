@@ -32,7 +32,7 @@
 								<a href="${s.base}/course/video/${video_id1!}.html" class="learn-btn" >开始学习</a>
 							</#if>
 						<#else>
-							<a href="" class="learn-btn-money" >￥${course.price}</a>
+							<a href="#modal-container-2" data-toggle="modal" class="learn-btn-money" >￥${course.price}</a>
 						</#if>
 							<div class="static-item"  >
 								<div class="meta">
@@ -130,38 +130,6 @@
 				</div>
 				<!-- 章节信息 - end -->
 				
-				<!-- ##### 隐藏表单  修改用户信息 开始 #####-->
-
-	<div class="col-md-12 column" >
-		<div class="modal fade" id="modal-container-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<div class="modal-header">
-						<h6 class="modal-title" id="myModalLabel">提示</h6>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">×</button>
-					</div>
-					<div>
-					
-						<br>
-							<p><h4>您尚未购买本课程！</h4></p>
-						<br>
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
-
-
-	</div>
-	<!-- #####隐藏表单  修改用户信息 结束 ##### -->
-				
 				<!-- 评论区 start -->
 				<div id="commentQA">
 				</div>
@@ -201,6 +169,71 @@
 			
 		</div>
 		
+		<!-- ##### 隐藏表单  修改用户信息 开始 #####-->
+
+	<div class="col-md-12 column" >
+		<div class="modal fade" id="modal-container-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h6 class="modal-title" id="myModalLabel">提示</h6>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+					</div>
+					<div>
+					
+						<br>
+							<p><h4>您尚未购买本课程！</h4></p>
+						<br>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	</div>
+	<!-- #####隐藏表单  修改用户信息 结束 ##### -->
+		
+		
+		<!-- ##### 隐藏表单  修改用户信息 开始 #####-->
+
+	<div class="col-md-12 column" >
+		<div class="modal fade" id="modal-container-2" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h6 class="modal-title" id="myModalLabel">提示</h6>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+					</div>
+					<div>
+					
+						<br>
+							<p><h4>支付功能尚未完成！</h4></p>
+						<br>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	</div>
+	<!-- #####隐藏表单  修改用户信息 结束 ##### -->
+	
 		<#include "./common/footer.html">
 		
 		<script type="text/javascript">
