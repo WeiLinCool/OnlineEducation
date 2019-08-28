@@ -26,11 +26,6 @@
 						<input id="identiryCode" name="identiryCode" maxlength="6" class="input-text" type="text" style="width: 150px;" placeholder="请输入验证码"/>
 						<a class="vali-base"><img  onclick="reloadIndityImg();" id="indeityImg"  src="${s.base}/tools/identiry/code.html" style="width:80px;height:40px;float:left;margin-left:10px;"/></a>
 						</li>
-						<li>
-							<label style="background-color:#EEEEEE"></label> 
-                           	<input type="checkbox" value="1" id="checkbox1" name="rememberMe" style="float: left;vertical-align:middle;">
-                           	<span class="text"  style="float: left;margin-left:5px;margin-top:-10px;">下次自动登录</span>
-                      	</li>
 						
 						<#if errcode ?? && errcode == 1>
 						<li style="text-align: left;">
@@ -45,6 +40,11 @@
 						<#if errcode ?? && errcode == 3>
 						<li style="text-align: left;">
 							<span style="color:red;">用户权限不足</span>
+						</li>
+						</#if>
+						<#if errcode ?? && errcode == 4>
+						<li style="text-align: left;">
+							<span style="color:red;">账号不存在</span>
 						</li>
 						</#if>
 						<li class="clearfix" style="margin-top: 20px;">
