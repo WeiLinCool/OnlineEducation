@@ -103,4 +103,5 @@ public class CourseListController {
 		mv.addObject("page", page);
 		return mv;
 	}
+	
 }
